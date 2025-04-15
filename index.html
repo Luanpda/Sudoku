@@ -15,7 +15,7 @@
         <div class="game">       
             
             
-            <div   class="cell" id="cell-1" contenteditable="true"></div>
+            
             
                 
         </div>
@@ -24,7 +24,7 @@
     <script>
         const gameContainer = document.querySelector('.game');
       
-        for (let i = 2; i <= 81; i++) {
+        for (let i = 0; i < 81; i++) {
           const cell = document.createElement('div');
           cell.classList.add('cell');
           cell.id = `cell-${i}`;
@@ -34,5 +34,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="clique.js" type="module"></script>
+    <script src="mostrarCelulas.js" type="module"></script>
 </body>
 </html>

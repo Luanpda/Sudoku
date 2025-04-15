@@ -28,6 +28,10 @@ body {
     
 }
 
+.display-6{
+    margin-bottom: 0.5em ;
+}
+
 .game {
     width: 28em;
     height: 28em;
@@ -75,3 +79,14 @@ body {
     border-bottom: 3px solid black;
 }
 
+
+.errado{
+    background-color: #842029 !important;
+}
+
+.marcada{
+    background-color: #adb5bd;
+}
+.foco{
+    background-color: #6c757d;
+}
