@@ -36,15 +36,16 @@ const linhas = [
 
 
 export function destacarCelulas(evento){
+    const celula = evento.target.id;
 
-    
-
+    if (!celula.id || !celula.id.startsWith('cell-')) return;
     document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
 
     const celulasMarcadas = document.querySelectorAll('.marcada');
     celulasMarcadas.forEach(cel => cel.classList.remove('marcada'));
 
-    const celula = evento.target.id;
+    
+
     const celulaFoco = document.getElementById(celula);
     celulaFoco.classList.add('foco');
 
@@ -54,7 +55,9 @@ export function destacarCelulas(evento){
         if(quadrantes[i].includes(nuemeroID)){
             for(let j = 0; j <9;j++){
                 const celulamarcada = document.getElementById('cell-'+quadrantes[i][j]);
-                celulamarcada.classList.add('marcada');
+                if (celulamarcada) {
+                    celulamarcada.classList.add('marcada');
+                }
 
             }
         }   
@@ -64,7 +67,9 @@ export function destacarCelulas(evento){
         if(colunas[i].includes(nuemeroID)){
             for(let j = 0; j < 9;j++){
                 const celulamarcada = document.getElementById('cell-'+colunas[i][j]);
-                celulamarcada.classList.add('marcada');
+                if (celulamarcada) {
+                    celulamarcada.classList.add('marcada');
+                }
             }
         }
     }
@@ -72,7 +77,9 @@ export function destacarCelulas(evento){
         if(linhas[i].includes(nuemeroID)){
             for(let j = 0; j < 9;j++){
                 const celulamarcada = document.getElementById('cell-'+linhas[i][j]);
-                celulamarcada.classList.add('marcada');
+                if (celulamarcada) {
+                    celulamarcada.classList.add('marcada');
+                }
             }
         }
     }

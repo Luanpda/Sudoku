@@ -11,16 +11,18 @@ const sudoku = [
   ];
   
 
-  for (let i = 0; i <= 81; i++) {
+  for (let i = 0; i < 81; i++) {
     const celula = document.getElementById('cell-'+ i);
     
     let coluna = i % 9;
     const linha  = Math.floor(i/9);
     const valor = sudoku[linha][coluna];
     if (valor === 0 ){
-        coluna = '';  
+      celula.textContent = '';  
+    }else{
+      celula.textContent = valor;
     }
-    celula.textContent = sudoku[linha][coluna];
+    
     
     
   } 

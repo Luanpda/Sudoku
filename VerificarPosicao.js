@@ -11,6 +11,10 @@ const respostaSudoku = [
     [4, 3, 8, 5, 2, 6, 9, 1, 7],
     [7, 9, 6, 3, 1, 8, 4, 5, 2]
   ];
+
+  
+
+
 let erros = 0;
   
 
@@ -29,9 +33,24 @@ export function verificarPosicao(evento,tecla){
         celula.classList.add('errado');
         erros++;
         mostrarErros(erros)
-        console.log('era pra ir');
 
     }
-
+    let venceu = true;
+    for(let i = 0; i<81 ;i++){
+        const cell = document.getElementById('cell-'+i);
+        if( cell.classList.contains('errado') || cell.textContent.trim() === ''){
+            venceu = false;
+            break;
+        }   
+    }
+    if (venceu){
+        const ganhou = document.createElement('p');
+        ganhou.textContent = 'Ganhou';
+        const container = document.getElementById('container');
+        container.appendChild(ganhou);
+        console.log('Ganhou');
+        
+        
+    } 
     
 }
