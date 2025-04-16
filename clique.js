@@ -23,7 +23,12 @@ document.addEventListener('click',(evento) =>{
             
             
         });
-    
+        evento.target.addEventListener('input', () => {
+            if (evento.target.textContent === '') {
+                evento.target.classList.remove('errado');
+            }
+        });
+
         
     } 
     

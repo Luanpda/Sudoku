@@ -1,3 +1,5 @@
+import { mostrarErros } from "./mostrarErros.js";
+
 const respostaSudoku = [
     [8, 1, 2, 7, 5, 3, 6, 4, 9],
     [9, 4, 3, 6, 8, 2, 1, 7, 5],
@@ -9,7 +11,7 @@ const respostaSudoku = [
     [4, 3, 8, 5, 2, 6, 9, 1, 7],
     [7, 9, 6, 3, 1, 8, 4, 5, 2]
   ];
-
+let erros = 0;
   
 
 export function verificarPosicao(evento,tecla){
@@ -22,8 +24,12 @@ export function verificarPosicao(evento,tecla){
     const resposta = respostaSudoku[linha][coluna];
     if (parseInt(tecla) === resposta){
         celula.classList.remove('errado');
+        
     }else{
         celula.classList.add('errado');
+        erros++;
+        mostrarErros(erros)
+        console.log('era pra ir');
 
     }
 
