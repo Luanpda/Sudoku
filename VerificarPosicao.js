@@ -28,22 +28,7 @@ export function verificarPosicao(evento,tecla){
         mostrarErros(erros)
 
     }
-    let venceu = true;
-    for(let i = 0; i<81 ;i++){
-        const cell = document.getElementById('cell-'+i);
-        if( cell.classList.contains('errado') || cell.textContent.trim() === ''){
-            venceu = false;
-            break;
-        }   
-    }
-    if (venceu){
-        const ganhou = document.createElement('p');
-        ganhou.textContent = 'Ganhou';
-        const container = document.getElementById('container');
-        container.appendChild(ganhou);
-        console.log('Ganhou');
-        
-        
-    } 
+
+    
     
 }

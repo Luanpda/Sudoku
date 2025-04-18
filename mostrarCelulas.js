@@ -1,5 +1,7 @@
-import { jogos } from "./jogos.js";
-export const jogoSorteado = jogos[Math.floor(Math.random() * jogos.length)];
+import { jogo } from "./geradorDeJogos.js";
+
+export const jogoSorteado = jogo
+
 const sudoku = jogoSorteado.sudoku
   
 
