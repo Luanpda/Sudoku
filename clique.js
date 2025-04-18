@@ -30,6 +30,7 @@ document.addEventListener('click',(evento) =>{
             
         });
         evento.target.addEventListener('input', () => {
+            
             if (evento.target.textContent === '') {
                 evento.target.classList.remove('errado');
             }
@@ -38,7 +39,7 @@ document.addEventListener('click',(evento) =>{
     }
     }
     if(evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho')){
-        const celula = evento.target.id;
+        
 
     
         document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
