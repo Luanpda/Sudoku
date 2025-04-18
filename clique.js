@@ -3,8 +3,9 @@ import { verificarPosicao } from "./VerificarPosicao.js";
 
 
 document.addEventListener('click',(evento) =>{
-    destacarCelulas(evento);
+    
     if(evento.target.classList.contains('cell')){
+        destacarCelulas(evento);
         evento.target.addEventListener('keydown',(eventoDigitar) =>{
 
 

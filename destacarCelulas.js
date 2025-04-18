@@ -38,7 +38,7 @@ const linhas = [
 export function destacarCelulas(evento){
     const celula = evento.target.id;
 
-    if (!celula.id || !celula.id.startsWith('cell-')) return;
+    
     document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
 
     const celulasMarcadas = document.querySelectorAll('.marcada');
