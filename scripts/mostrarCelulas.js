@@ -1,7 +1,8 @@
 import { gerarSudoku,gerarSudokuFacil,gerarSudokuMedio,gerarSudokuDificil } from "./geradorDeJogos.js";
-import { setJogoAtual,getJogoAtual } from "./estadoJogo.js";
+import { setJogoAtual } from "./estadoJogo.js";
 
  function  preencherTabuleiro(sudoku){
+  
   for (let i = 0; i < 81; i++) {
     const celula = document.getElementById('cell-'+ i);
     
@@ -20,6 +21,7 @@ import { setJogoAtual,getJogoAtual } from "./estadoJogo.js";
 }
   document.addEventListener("DOMContentLoaded", () => {
     const jogoAleatorio = gerarSudoku();
+    setJogoAtual(jogoAleatorio);
     preencherTabuleiro(jogoAleatorio.sudoku);
   });
 

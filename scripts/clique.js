@@ -5,6 +5,7 @@ import { verificarVitoria } from "./verificarVitoria.js";
 document.addEventListener('click',(evento) =>{
     
     if(evento.target.classList.contains('cell')){
+        
         destacarCelulas(evento);
         if (!evento.target.hasAttribute('listener-adicionado')) {
             evento.target.setAttribute('listener-adicionado', 'true');

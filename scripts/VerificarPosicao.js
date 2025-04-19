@@ -1,9 +1,5 @@
 import { mostrarErros } from "./mostrarErros.js";
-import { jogoSorteado } from "./mostrarCelulas.js";
-
-
-
-
+import { getJogoAtual } from "./estadoJogo.js";
 
 let erros = 0;
   
@@ -17,6 +13,7 @@ export function verificarPosicao(evento,tecla){
     const coluna = nuemeroID % 9;
 
     const jogo = getJogoAtual();
+    console.log(jogo)
     if (!jogo) return;
     
     const resposta = jogo.respostaSudoku[linha][coluna];
