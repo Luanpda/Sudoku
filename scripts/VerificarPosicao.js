@@ -2,10 +2,7 @@ import { mostrarErros } from "./mostrarErros.js";
 import { jogoSorteado } from "./mostrarCelulas.js";
 
 
-const respostaSudoku = jogoSorteado.respostaSudoku;
 
-
-  
 
 
 let erros = 0;
@@ -18,7 +15,14 @@ export function verificarPosicao(evento,tecla){
     const nuemeroID = parseInt(celulaID.split('-')[1]);
     const linha  = Math.floor(nuemeroID/9);
     const coluna = nuemeroID % 9;
-    const resposta = respostaSudoku[linha][coluna];
+
+    const jogo = getJogoAtual();
+    if (!jogo) return;
+    
+    const resposta = jogo.respostaSudoku[linha][coluna];
+
+
+
     if (parseInt(tecla) === resposta){
         celula.classList.remove('errado');
         
