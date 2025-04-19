@@ -9,6 +9,7 @@
     <link rel="shortcut icon" type="imagex/png" href="pastime.png">
 </head>
 <body>
+
     <div id="container" class="container">
         <div class="cabecalho text-center mb-4">
             <h1 class="display-6 text-white">SUDOKU</h1>
@@ -21,9 +22,17 @@
         <div >
             <h2 class="vitoria">Ganhou!!!</h2>
         </div>
-        <div class="game">       
+        <div class="dificuldade-game">   
+            <div class="dificuldade">
+                <button id="facil" type="button" class="btn btn-outline-success">Facil</button>
+                <button id="medio"  type="button" class="btn btn-outline-warning">Medio</button>
+                <button id="dificil" type="button" class="btn btn-outline-danger">Dificil</button>
+            
+            </div>
+            <div class="game"></div>
+        </div>    
         
-        </div>
+
     </div>
 
     <script>
@@ -41,5 +50,6 @@
     <script src="./scripts/geradorDeJogos.js" type="module"></script>
     <script src="./scripts/clique.js" type="module"></script>
     <script src="./scripts/mostrarCelulas.js" type="module"></script>
+    <script src="./scripts/dificuldade.js" type="module"></script>
 </body>
 </html>

@@ -51,7 +51,7 @@ function criarTabuleiroVazio() {
     return sudoku;
   }
   
-  function gerarSudoku() {
+  export function gerarSudoku() {
     const dificuldade = ["fácil", "médio", "difícil"][Math.floor(Math.random() * 3)];
     const tabuleiroCompleto = criarTabuleiroVazio();
     preencher(tabuleiroCompleto);
@@ -63,13 +63,45 @@ function criarTabuleiroVazio() {
       sudoku
     };
   }
+  export function gerarSudokuFacil() {
+    const dificuldade = "fácil";
+    const tabuleiroCompleto = criarTabuleiroVazio();
+    preencher(tabuleiroCompleto);
+    const sudoku = removerNumeros(tabuleiroCompleto, dificuldade);
   
-  // Exemplo de uso:
+    return {
+      dificuldade,
+      respostaSudoku: tabuleiroCompleto,
+      sudoku
+    };
+  }
+  export function gerarSudokuMedio() {
+    const dificuldade = "médio";
+    const tabuleiroCompleto = criarTabuleiroVazio();
+    preencher(tabuleiroCompleto);
+    const sudoku = removerNumeros(tabuleiroCompleto, dificuldade);
+  
+    return {
+      dificuldade,
+      respostaSudoku: tabuleiroCompleto,
+      sudoku
+    };
+  }
+  export function gerarSudokuDificil() {
+    const dificuldade = "difícil";
+    const tabuleiroCompleto = criarTabuleiroVazio();
+    preencher(tabuleiroCompleto);
+    const sudoku = removerNumeros(tabuleiroCompleto, dificuldade);
+  
+    return {
+      dificuldade,
+      respostaSudoku: tabuleiroCompleto,
+      sudoku
+    };
+  }
 
-  export const jogo = gerarSudoku();
-  console.log("Dificuldade:", jogo.dificuldade);
-  console.log("Sudoku:");
-  console.table(jogo.sudoku);
-  console.log("Resposta:");
-  console.table(jogo.respostaSudoku);
+
+  
+ 
+  
   

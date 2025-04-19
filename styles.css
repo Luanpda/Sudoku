@@ -19,6 +19,9 @@ body {
     color: black;
 }
 
+
+
+
 .container {
     
     display: flex;
@@ -42,6 +45,26 @@ body {
     visibility: hidden;
     margin-bottom: 0.5em;
     color: #28a745;
+}
+
+
+
+.dificuldade-game{
+    width: 100%;
+    display: flex;
+    
+}
+.dificuldade{
+    display: flex;
+    height: auto;
+    align-self: flex-start;
+    flex-direction: column;
+    gap: 1em;
+    border: 2px solid black;
+    padding: 1em;
+    border-radius: 10px;
+    margin: 0 2em 0 1em;
+    
 }
 
 .display-6{

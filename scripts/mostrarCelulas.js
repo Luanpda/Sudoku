@@ -1,10 +1,7 @@
-import { jogo } from "./geradorDeJogos.js";
+import { gerarSudoku,gerarSudokuFacil,gerarSudokuMedio,gerarSudokuDificil } from "./geradorDeJogos.js";
+import { setJogoAtual,getJogoAtual } from "./estadoJogo.js";
 
-export const jogoSorteado = jogo
-
-const sudoku = jogoSorteado.sudoku
-  
-
+ function  preencherTabuleiro(sudoku){
   for (let i = 0; i < 81; i++) {
     const celula = document.getElementById('cell-'+ i);
     
@@ -19,6 +16,32 @@ const sudoku = jogoSorteado.sudoku
     
     
     
-  } 
+  }
+}
+  document.addEventListener("DOMContentLoaded", () => {
+    const jogoAleatorio = gerarSudoku();
+    preencherTabuleiro(jogoAleatorio.sudoku);
+  });
 
 
+  const facil = document.getElementById('facil');
+  const medio = document.getElementById('medio');
+  const dificil = document.getElementById('dificil');
+  
+  facil.addEventListener('click', () => {
+    const jogo = gerarSudokuFacil();
+    setJogoAtual(jogo);
+    preencherTabuleiro(jogo.sudoku);
+  });
+  
+  medio.addEventListener('click', () => {
+    const jogo = gerarSudokuMedio();
+    setJogoAtual(jogo);
+    preencherTabuleiro(jogo.sudoku);
+  });
+  
+  dificil.addEventListener('click', () => {
+    const jogo = gerarSudokuDificil();
+    setJogoAtual(jogo);
+    preencherTabuleiro(jogo.sudoku);
+  });
