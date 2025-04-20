@@ -1,7 +1,7 @@
 import { mostrarErros } from "./mostrarErros.js";
 import { getJogoAtual } from "./estadoJogo.js";
+import { setErros,getErros } from "./estadoJogo.js";
 
-let erros = 0;
   
 
 export function verificarPosicao(evento,tecla){
@@ -13,7 +13,6 @@ export function verificarPosicao(evento,tecla){
     const coluna = nuemeroID % 9;
 
     const jogo = getJogoAtual();
-    console.log(jogo)
     if (!jogo) return;
     
     const resposta = jogo.respostaSudoku[linha][coluna];
@@ -25,8 +24,10 @@ export function verificarPosicao(evento,tecla){
         
     }else{
         celula.classList.add('errado');
-        erros++;
-        mostrarErros(erros)
+        let errosAtuais = getErros();
+        errosAtuais++;
+        setErros(errosAtuais);
+        mostrarErros(errosAtuais);
 
     }
 

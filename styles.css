@@ -29,8 +29,12 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #141619;
-    width: 45em;
-    height: 40em;
+    max-width: 770px;
+    width: 90%;
+    min-height: 630px;
+    gap: 1em;
+    height: auto;
+    padding: 2.6em 1em;
     border-radius: 20px;
     
 }
@@ -43,15 +47,18 @@ body {
 }
 .vitoria{
     visibility: hidden;
-    margin-bottom: 0.5em;
+    
+    
     color: #28a745;
+    
 }
 
 
 
 .dificuldade-game{
-    width: 100%;
+    width: 90%;
     display: flex;
+    flex-direction: row;
     
 }
 .dificuldade{
@@ -73,8 +80,10 @@ body {
 }
 
 .game {
-    width: 28em;
-    height: 28em;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    
     background-color: black;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -121,8 +130,14 @@ body {
 
 
 .errado{
-    background-color: #842029 !important;
+    color: #842029 ;
 }
+
+.errado:hover{
+    background-color: #842029;
+    color: var(--branco);
+}
+
 
 .marcada{
     background-color: #adb5bd;
@@ -141,3 +156,38 @@ body {
 }
 
 
+@media (max-width: 768px) {
+    .container {
+      padding: 1em;
+      border-radius: 10px;
+      width: 95%;
+    }
+    .cabecalho{
+        width: 100%;
+        gap: 1em;
+    }
+
+
+    .game {
+        max-width: 90vw;
+      }
+    
+      .cell {
+        font-size: 1.2em;
+      }
+    
+      .dificuldade-game {
+
+        
+        flex-direction: column-reverse;
+        align-items: center; 
+    }
+    
+    .dificuldade {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin: 1em 0 0 0; 
+    }
+
+  }

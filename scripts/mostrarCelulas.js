@@ -1,6 +1,6 @@
 import { gerarSudoku,gerarSudokuFacil,gerarSudokuMedio,gerarSudokuDificil } from "./geradorDeJogos.js";
-import { setJogoAtual } from "./estadoJogo.js";
-
+import { setJogoAtual,setErros } from "./estadoJogo.js";
+import { resetarErros } from "./resetarErros.js";
  function  preencherTabuleiro(sudoku){
   
   for (let i = 0; i < 81; i++) {
@@ -31,18 +31,21 @@ import { setJogoAtual } from "./estadoJogo.js";
   const dificil = document.getElementById('dificil');
   
   facil.addEventListener('click', () => {
+    resetarErros()
     const jogo = gerarSudokuFacil();
     setJogoAtual(jogo);
     preencherTabuleiro(jogo.sudoku);
   });
   
   medio.addEventListener('click', () => {
+    resetarErros()
     const jogo = gerarSudokuMedio();
     setJogoAtual(jogo);
     preencherTabuleiro(jogo.sudoku);
   });
   
   dificil.addEventListener('click', () => {
+    resetarErros()
     const jogo = gerarSudokuDificil();
     setJogoAtual(jogo);
     preencherTabuleiro(jogo.sudoku);

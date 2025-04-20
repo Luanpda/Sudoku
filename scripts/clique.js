@@ -39,7 +39,7 @@ document.addEventListener('click',(evento) =>{
         
     }
     }
-    if(evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho')){
+    if(evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho') || evento.target.classList.contains('dificuldade-game')){
         
 
     
