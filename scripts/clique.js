@@ -3,8 +3,8 @@ import { verificarPosicao } from "./VerificarPosicao.js";
 import { verificarVitoria } from "./verificarVitoria.js";
 
 
-['click', 'touchstart'].forEach(tipoEvento => {
-document.addEventListener(tipoEvento,(evento) =>{
+
+document.addEventListener('pointerdown',(evento) =>{
     
     if(evento.target.classList.contains('cell')){
         
@@ -53,5 +53,5 @@ document.addEventListener(tipoEvento,(evento) =>{
     
     
 })
-});
+
 
