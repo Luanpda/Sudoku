@@ -160,7 +160,7 @@ body {
     .container {
       padding: 1em;
       border-radius: 10px;
-      width: 100%;
+      width: 98%;
     }
     .cabecalho{
         width: 100%;
@@ -186,8 +186,11 @@ body {
     .dificuldade {
         display: flex;
         justify-content: center;
+        align-items: center;
         flex-direction: row;
-        margin: 1em 0 0 0; 
+        gap: 1em;
+        margin: 1em auto 0 auto;
+        
     }
 
   }
