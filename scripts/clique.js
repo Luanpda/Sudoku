@@ -11,17 +11,17 @@ document.addEventListener('pointerdown',(evento) =>{
         destacarCelulas(evento);
         if (!evento.target.hasAttribute('listener-adicionado')) {
             evento.target.setAttribute('listener-adicionado', 'true');
+            
             evento.target.addEventListener('input', () => {
                 const texto = evento.target.textContent.trim();
             
-                // Remove tudo que não seja de 1 a 9
+                
                 if (!/^[1-9]$/.test(texto)) {
                     evento.target.textContent = '';
                     evento.target.classList.remove('errado');
                     return;
                 }
             
-                // Se for válido, verifica
                 verificarPosicao(evento, texto);
                 setTimeout(verificarVitoria, 0);
             });
