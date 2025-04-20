@@ -2,7 +2,9 @@ import { destacarCelulas } from "./destacarCelulas.js";
 import { verificarPosicao } from "./VerificarPosicao.js";
 import { verificarVitoria } from "./verificarVitoria.js";
 
-document.addEventListener('click',(evento) =>{
+
+['click', 'touchstart'].forEach(tipoEvento => {
+document.addEventListener(tipoEvento,(evento) =>{
     
     if(evento.target.classList.contains('cell')){
         
@@ -51,4 +53,5 @@ document.addEventListener('click',(evento) =>{
     
     
 })
+});
 
