@@ -158,6 +158,13 @@ body {
     font-size: 25px;
 }
 
+.NumeroIgual{
+    background-color: #9ec5fe
+}
+.NumeroSelecionado{
+    background-color:#6ea8fe !important;
+}
+
 
 @media (max-width: 768px) {
     .container {

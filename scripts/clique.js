@@ -1,6 +1,7 @@
 import { destacarCelulas } from "./destacarCelulas.js";
 import { verificarPosicao } from "./VerificarPosicao.js";
 import { verificarVitoria } from "./verificarVitoria.js";
+import {destacarNumIguais} from "./destacarNumIguais.js"
 
 
 
@@ -9,6 +10,7 @@ document.addEventListener('pointerdown',(evento) =>{
     if(evento.target.classList.contains('cell')){
         
         destacarCelulas(evento);
+        destacarNumIguais(evento);
         if (!evento.target.hasAttribute('listener-adicionado')) {
             evento.target.setAttribute('listener-adicionado', 'true');
             
@@ -37,7 +39,8 @@ document.addEventListener('pointerdown',(evento) =>{
     if(evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho') || evento.target.classList.contains('dificuldade-game')){
         
 
-    
+        document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
+        document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
         document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
 
         const celulasMarcadas = document.querySelectorAll('.marcada');
