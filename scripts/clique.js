@@ -40,7 +40,7 @@ document.addEventListener('pointerdown',(evento) =>{
         
 
         document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
-        document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
+        document.querySelectorAll('.NumeroSelecionado').forEach(cell => cell.classList.remove('NumeroSelecionado'));
         document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
 
         const celulasMarcadas = document.querySelectorAll('.marcada');
