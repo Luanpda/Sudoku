@@ -3,12 +3,20 @@ function criarTabuleiroVazio() {
   }
   
   function éSeguro(tabuleiro, linha, col, num) {
+    
     for (let x = 0; x < 9; x++) {
       if (tabuleiro[linha][x] === num || tabuleiro[x][col] === num) return false;
-      const blocoLinha = 3 * Math.floor(linha / 3) + Math.floor(x / 3);
-      const blocoCol = 3 * Math.floor(col / 3) + x % 3;
-      if (tabuleiro[blocoLinha][blocoCol] === num) return false;
     }
+  
+    
+    const blocoLinhaInicio = 3 * Math.floor(linha / 3);
+    const blocoColInicio = 3 * Math.floor(col / 3);
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (tabuleiro[blocoLinhaInicio + i][blocoColInicio + j] === num) return false;
+      }
+    }
+  
     return true;
   }
   
