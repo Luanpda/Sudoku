@@ -6,15 +6,23 @@ import { resetarErros } from "./resetarErros.js";
  function  preencherTabuleiro(sudoku){
   
   for (let i = 0; i < 81; i++) {
-    const celula = document.getElementById('cell-'+ i);
-    
+    const celula = document.getElementById('cell-'+ i);  
     let coluna = i % 9;
     const linha  = Math.floor(i/9);
     const valor = sudoku[linha][coluna];
+
+
+    celula.classList.remove('numeroInicial', 'modo-rascunho');
+    celula.querySelectorAll('.rascunho').forEach(r => r.remove());
+
     if (valor === 0 ){
-      celula.textContent = '';  
+      celula.textContent = '';
+     
+      celula.removeAttribute('listener-adicionado');
     }else{
       celula.textContent = valor;
+     
+      celula.classList.add('numeroInicial')
     }
     
     

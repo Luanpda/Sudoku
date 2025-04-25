@@ -5,38 +5,19 @@ import {destacarNumIguais} from "./destacarNumIguais.js"
 
 
 
+
+
 document.addEventListener('pointerdown',(evento) =>{
     
     if(evento.target.classList.contains('cell')){
+        const celula = evento.target.closest('.cell');
         
         destacarCelulas(evento);
         destacarNumIguais(evento);
-        if (!evento.target.hasAttribute('listener-adicionado')) {
-            evento.target.setAttribute('listener-adicionado', 'true');
-            
-            evento.target.addEventListener('input', () => {
-                const texto = evento.target.textContent.trim();
-            
-                
-                if (!/^[1-9]$/.test(texto)) {
-                    evento.target.textContent = '';
-                    evento.target.classList.remove('errado');
-                    return;
-                }
-            
-                verificarPosicao(evento, texto);
-                setTimeout(verificarVitoria, 0);
-            });
-        evento.target.addEventListener('input', () => {
-            
-            if (evento.target.textContent === '') {
-                evento.target.classList.remove('errado');
-            }
-        });
         
     }
-    }
     if(evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho') || evento.target.classList.contains('dificuldade-game')){
+
         
 
         document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
@@ -49,5 +30,101 @@ document.addEventListener('pointerdown',(evento) =>{
     
     
 })
+
+document.addEventListener('dblclick',(evento) =>{
+
+    const celula = evento.target.closest('.cell');
+    if (!celula || celula.classList.contains('numeroInicial') || celula.classList.contains('CellPreenchida')) return;
+    
+    
+    if (celula.classList.contains('modo-rascunho')) {
+        celula.classList.remove('modo-rascunho');
+        
+        celula.querySelectorAll('.rascunho').forEach(r => r.remove());
+
+        celula.focus();
+        return;
+      }
+
+      
+    
+
+    if(celula.classList.contains('cell')){
+        
+        
+        if (!evento.target.classList.contains('modo-rascunho')) {
+
+            evento.target.classList.add('modo-rascunho');
+            evento.target.removeAttribute('contenteditable');
+            
+            
+            for( let i  = 0; i < 9; i++ ){
+                const celulaRascunho = document.createElement('div');
+                celulaRascunho.classList.add('rascunho');
+                celulaRascunho.id = `celulaRascunho-${i}`;
+                evento.target.appendChild(celulaRascunho);
+            }
+
+
+            if (!celula.hasAttribute('keydown-adicionado')) {
+                celula.setAttribute('keydown-adicionado', 'true');
+                
+                evento.target.addEventListener('keydown', (valor) => {
+                    const tecla = valor.key;
+            
+                    if (/^[1-9]$/.test(tecla)) {
+                        valor.preventDefault();
+                        const index = parseInt(tecla) - 1;
+                        const alvo = valor.target.querySelector(`#celulaRascunho-${index}`);
+            
+                        if (alvo) {
+                            
+                            if (alvo.textContent === tecla) {
+                                alvo.textContent = '';
+                            } else {
+                                alvo.textContent = tecla;
+                            }
+                        }
+                    }
+                });
+            }
+        
+        }
+
+    }
+})
+
+document.addEventListener('keyup', (evento) => {
+    const celula = document.activeElement;
+
+    if (
+        celula &&
+        celula.classList.contains('cell') &&
+        !celula.classList.contains('numeroInicial') &&
+        !celula.classList.contains('modo-rascunho')
+    ) {
+        if (/^[1-9]$/.test(evento.key)) {
+            evento.preventDefault();
+            if (celula.textContent === evento.key){
+                celula.textContent = "";
+                celula.classList.remove('CellPreenchida');
+            }else {
+                celula.textContent = evento.key;
+                celula.classList.add('CellPreenchida');
+                verificarPosicao({ target: celula }, evento.key);
+            }
+            
+
+            
+            setTimeout(verificarVitoria, 0);
+        }
+
+        if (evento.key === "Backspace" || evento.key === "Delete") {
+            evento.preventDefault();
+            celula.textContent = "";
+            celula.classList.remove('errado');
+        }
+    }
+});
 
 
