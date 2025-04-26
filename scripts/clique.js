@@ -7,20 +7,19 @@ import {destacarNumIguais} from "./destacarNumIguais.js"
 
 
 
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
-document.addEventListener('pointerdown', (evento) => {
-    if (evento.target.classList.contains('cell')) {
+document.addEventListener('pointerdown',(evento) =>{
+    
+    if(evento.target.classList.contains('cell')){
         const celula = evento.target.closest('.cell');
+        
         destacarCelulas(evento);
         destacarNumIguais(evento);
-
-        if (isMobile) {
-            abrirTecladoMobile(celula);
-        }
+        
     }
+    if(evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho') || evento.target.classList.contains('dificuldade-game')){
 
-    if (evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho') || evento.target.classList.contains('dificuldade-game')) {
+        
+
         document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
         document.querySelectorAll('.NumeroSelecionado').forEach(cell => cell.classList.remove('NumeroSelecionado'));
         document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
@@ -28,82 +27,9 @@ document.addEventListener('pointerdown', (evento) => {
         const celulasMarcadas = document.querySelectorAll('.marcada');
         celulasMarcadas.forEach(cel => cel.classList.remove('marcada'));
     }
-});
-
-// MOBILE - abrir teclado usando input invisível
-function abrirTecladoMobile(celula) {
-    let input = document.createElement('input');
-    input.type = 'number';
-    input.min = '1';
-    input.max = '9';
-    input.style.position = 'absolute';
-    input.style.opacity = 0;
-    input.style.height = '1px';
-    input.style.width = '1px';
-    input.style.border = 'none';
-    input.style.outline = 'none';
-    input.style.zIndex = '-1';
     
-    document.body.appendChild(input);
-    input.focus();
-
-    input.addEventListener('input', () => {
-        const valor = input.value.trim();
-
-        if (/^[1-9]$/.test(valor)) {
-            if (celula.textContent === valor) {
-                celula.textContent = '';
-                celula.classList.remove('CellPreenchida');
-                celula.classList.remove('errado');
-            } else {
-                celula.textContent = valor;
-                celula.classList.add('CellPreenchida');
-                verificarPosicao({ target: celula }, valor);
-            }
-            setTimeout(verificarVitoria, 0);
-        }
-    });
-
-    input.addEventListener('blur', () => {
-        document.body.removeChild(input);
-    });
-}
-
-// PC - usa keyup normal
-if (!isMobile) {
-    document.addEventListener('keyup', (evento) => {
-        const celula = document.activeElement;
-
-        if (
-            celula &&
-            celula.classList.contains('cell') &&
-            !celula.classList.contains('numeroInicial') &&
-            !celula.classList.contains('modo-rascunho')
-        ) {
-            if (/^[1-9]$/.test(evento.key)) {
-                evento.preventDefault();
-
-                if (celula.textContent === evento.key) {
-                    celula.textContent = '';
-                    celula.classList.remove('CellPreenchida');
-                    celula.classList.remove('errado');
-                } else {
-                    celula.textContent = evento.key;
-                    celula.classList.add('CellPreenchida');
-                    verificarPosicao({ target: celula }, evento.key);
-                }
-                setTimeout(verificarVitoria, 0);
-            }
-
-            if (evento.key === "Backspace" || evento.key === "Delete") {
-                evento.preventDefault();
-                celula.textContent = '';
-                celula.classList.remove('errado');
-                celula.classList.remove('CellPreenchida');
-            }
-        }
-    });
-}
+    
+})
 
 document.addEventListener('dblclick',(evento) =>{
 
@@ -168,41 +94,63 @@ document.addEventListener('dblclick',(evento) =>{
     }
 })
 
+document.addEventListener('keyup', (evento) => {
+    const celula = document.activeElement;
 
-
-
-
-// document.addEventListener('keyup', (evento) => {
-//     const celula = document.activeElement;
-
-//     if (
-//         celula &&
-//         celula.classList.contains('cell') &&
-//         !celula.classList.contains('numeroInicial') &&
-//         !celula.classList.contains('modo-rascunho')
-//     ) {
-//         if (/^[1-9]$/.test(evento.key)) {
-//             evento.preventDefault();
-//             if (celula.textContent === evento.key){
-//                 celula.textContent = "";
-//                 celula.classList.remove('CellPreenchida');
-//             }else {
-//                 celula.textContent = evento.key;
-//                 celula.classList.add('CellPreenchida');
-//                 verificarPosicao({ target: celula }, evento.key);
-//             }
+    if (
+        celula &&
+        celula.classList.contains('cell') &&
+        !celula.classList.contains('numeroInicial') &&
+        !celula.classList.contains('modo-rascunho')
+    ) {
+        if (/^[1-9]$/.test(evento.key)) {
+            evento.preventDefault();
+            if (celula.textContent === evento.key){
+                celula.textContent = "";
+                celula.classList.remove('CellPreenchida');
+            }else {
+                celula.textContent = evento.key;
+                celula.classList.add('CellPreenchida');
+                verificarPosicao({ target: celula }, evento.key);
+            }
             
 
             
-//             setTimeout(verificarVitoria, 0);
-//         }
+            setTimeout(verificarVitoria, 0);
+        }
 
-//         if (evento.key === "Backspace" || evento.key === "Delete") {
-//             evento.preventDefault();
-//             celula.textContent = "";
-//             celula.classList.remove('errado');
-//         }
-//     }
-// });
+        if (evento.key === "Backspace" || evento.key === "Delete") {
+            evento.preventDefault();
+            celula.textContent = "";
+            celula.classList.remove('errado');
+        }
+    }
+});
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
+if (isMobile) {
+  const barra = document.querySelector('.numeros');
+  
+  barra.addEventListener('click', (e) => {
+    const botao = e.target.closest('button');
+    if (!botao) return;
+
+    const celulaSelecionada = document.querySelector('.foco'); // ou sua célula atual selecionada
+
+    if (!celulaSelecionada || celulaSelecionada.classList.contains('numeroInicial')) return;
+
+    if (botao.classList.contains('botao-numero')) {
+      const numero = botao.dataset.numero;
+      celulaSelecionada.textContent = numero;
+      celulaSelecionada.classList.add('CellPreenchida');
+      // Aqui você chama suas funções:
+      verificarPosicao({ target: celulaSelecionada }, numero);
+      setTimeout(verificarVitoria, 0);
+    } else if (botao.classList.contains('botao-apagar')) {
+      celulaSelecionada.textContent = '';
+      celulaSelecionada.classList.remove('errado');
+      celulaSelecionada.classList.remove('CellPreenchida');
+    }
+  });
+}
 

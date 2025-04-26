@@ -239,6 +239,19 @@ body {
         flex-direction: column-reverse;
         align-items: center; 
     }
+
+    .numeros{
+        
+        border: 1px solid var(--branco);
+    }
+    .botao-numero{
+        all: unset;
+        width: 30px; 
+        height: 30px;
+       
+        background-color: transparent;
+        color: var(--branco);
+    }
     
     .dificuldade {
         display: flex;
