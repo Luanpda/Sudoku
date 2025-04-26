@@ -241,14 +241,19 @@ body {
     }
 
     .numeros{
-        width: 100%;
+        display: flex; /* Deixa tudo na mesma linha */
+        justify-content: center; /* Centraliza */
+        gap: 0.5em; /* Espaço entre os botões */
+        flex-wrap: nowrap; /* NÃO deixa quebrar linha */
+        margin-top: 1em;
         border: 1px solid var(--branco);
     }
     .botao-numero{
         all: unset;
-        width: 30px; 
-        height: 30px;
-       
+        width: 35px; 
+        height: 35px;
+        text-align: center;
+        font-size: 1.2em;
         background-color: transparent;
         color: var(--branco);
     }
