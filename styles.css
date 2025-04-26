@@ -257,6 +257,12 @@ body {
         background-color: transparent;
         color: var(--branco);
     }
+
+    .botao-numero:active{
+        background-color: #6ea8fe;
+        transform: scale(0.9);
+        transition: all 0.3s ease;
+    }
     
     .dificuldade {
         display: flex;
