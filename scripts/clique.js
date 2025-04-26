@@ -93,7 +93,7 @@ document.addEventListener('dblclick',(evento) =>{
 
     }
 })
-
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 if (isMobile) {
     // Mobile: usar 'input' (mais confiável que keyup/keydown)
     document.addEventListener('input', (evento) => {
