@@ -140,16 +140,34 @@ if (isMobile) {
     if (!celulaSelecionada || celulaSelecionada.classList.contains('numeroInicial')) return;
 
     if (botao.classList.contains('botao-numero')) {
+        if(botao.classList.contains('modo-rascunho')){
+            const numero = botao.dataset.numero;
+            const index = parseInt(numero) - 1;
+            const alvo = celulaSelecionada.querySelector(`#celulaRascunho-${index}`);
+            if (alvo) {
+                            
+                if (alvo.textContent === numero) {
+                    alvo.textContent = '';
+                } else {
+                    alvo.textContent = numero;
+                }
+            }
+            return;
+        }
       const numero = botao.dataset.numero;
       celulaSelecionada.textContent = numero;
       celulaSelecionada.classList.add('CellPreenchida');
-      // Aqui você chama suas funções:
+      
+
       verificarPosicao({ target: celulaSelecionada }, numero);
       setTimeout(verificarVitoria, 0);
+
     } else if (botao.classList.contains('botao-apagar')) {
       celulaSelecionada.textContent = '';
       celulaSelecionada.classList.remove('errado');
       celulaSelecionada.classList.remove('CellPreenchida');
+    }else if(botao.classList.contains('botao-rascunho')){
+        
     }
   });
 }
