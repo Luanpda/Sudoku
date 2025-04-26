@@ -243,7 +243,7 @@ body {
     .numeros{
         display: flex; /* Deixa tudo na mesma linha */
         justify-content: center; /* Centraliza */
-        gap: 0.5em; /* Espaço entre os botões */
+        
         flex-wrap: nowrap; /* NÃO deixa quebrar linha */
         margin-top: 1em;
         border: 1px solid var(--branco);
