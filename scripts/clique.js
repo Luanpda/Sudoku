@@ -12,6 +12,10 @@ document.addEventListener('pointerdown',(evento) =>{
     if(evento.target.classList.contains('cell')){
         const celula = evento.target.closest('.cell');
         
+        if (!celula.classList.contains('modo-rascunho')) {
+            celula.setAttribute('contenteditable', 'true');
+            celula.focus();
+        }
         destacarCelulas(evento);
         destacarNumIguais(evento);
         
