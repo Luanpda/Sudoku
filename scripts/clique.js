@@ -94,37 +94,71 @@ document.addEventListener('dblclick',(evento) =>{
     }
 })
 
-document.addEventListener('keyup', (evento) => {
-    const celula = document.activeElement;
+if (isMobile) {
+    // Mobile: usar 'input' (mais confiável que keyup/keydown)
+    document.addEventListener('input', (evento) => {
+        const celula = document.activeElement;
 
-    if (
-        celula &&
-        celula.classList.contains('cell') &&
-        !celula.classList.contains('numeroInicial') &&
-        !celula.classList.contains('modo-rascunho')
-    ) {
-        if (/^[1-9]$/.test(evento.key)) {
-            evento.preventDefault();
-            if (celula.textContent === evento.key){
-                celula.textContent = "";
-                celula.classList.remove('CellPreenchida');
-            }else {
-                celula.textContent = evento.key;
-                celula.classList.add('CellPreenchida');
-                verificarPosicao({ target: celula }, evento.key);
+        if (
+            celula &&
+            celula.classList.contains('cell') &&
+            !celula.classList.contains('numeroInicial') &&
+            !celula.classList.contains('modo-rascunho')
+        ) {
+            const valor = celula.textContent.trim();
+
+            if (/^[1-9]$/.test(valor)) {
+                // Mesmo esquema: toggle se clicar o mesmo número
+                if (celula.dataset.ultimoValor === valor) {
+                    celula.textContent = '';
+                    celula.classList.remove('CellPreenchida');
+                    celula.classList.remove('errado');
+                } else {
+                    celula.dataset.ultimoValor = valor;
+                    celula.classList.add('CellPreenchida');
+                    verificarPosicao({ target: celula }, valor);
+                }
+
+                setTimeout(verificarVitoria, 0);
             }
-            
-
-            
-            setTimeout(verificarVitoria, 0);
         }
+    });
+} else {
+    // Desktop: usa o keyup como antes
+    document.addEventListener('keyup', (evento) => {
+        const celula = document.activeElement;
 
-        if (evento.key === "Backspace" || evento.key === "Delete") {
-            evento.preventDefault();
-            celula.textContent = "";
-            celula.classList.remove('errado');
+        if (
+            celula &&
+            celula.classList.contains('cell') &&
+            !celula.classList.contains('numeroInicial') &&
+            !celula.classList.contains('modo-rascunho')
+        ) {
+            if (/^[1-9]$/.test(evento.key)) {
+                evento.preventDefault();
+
+                if (celula.textContent === evento.key) {
+                    celula.textContent = '';
+                    celula.classList.remove('CellPreenchida');
+                    celula.classList.remove('errado');
+                } else {
+                    celula.textContent = evento.key;
+                    celula.classList.add('CellPreenchida');
+                    verificarPosicao({ target: celula }, evento.key);
+                }
+
+                setTimeout(verificarVitoria, 0);
+            }
+
+            if (evento.key === "Backspace" || evento.key === "Delete") {
+                evento.preventDefault();
+                celula.textContent = '';
+                celula.classList.remove('errado');
+                celula.classList.remove('CellPreenchida');
+            }
         }
-    }
-});
+    });
+}
+
 
 
