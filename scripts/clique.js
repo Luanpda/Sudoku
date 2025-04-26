@@ -133,14 +133,15 @@ if (isMobile) {
   
   barra.addEventListener('click', (e) => {
     const botao = e.target.closest('button');
+    
     if (!botao) return;
 
-    const celulaSelecionada = document.querySelector('.foco'); // ou sua célula atual selecionada
-
+    const celulaSelecionada = document.querySelector('.foco'); 
+    const celula = e.target.closest('cell')
     if (!celulaSelecionada || celulaSelecionada.classList.contains('numeroInicial')) return;
 
     if (botao.classList.contains('botao-numero')) {
-        if(botao.classList.contains('modo-rascunho')){
+        if(celulaSelecionada.classList.contains('modo-rascunho')){
             const numero = botao.dataset.numero;
             const index = parseInt(numero) - 1;
             const alvo = celulaSelecionada.querySelector(`#celulaRascunho-${index}`);
