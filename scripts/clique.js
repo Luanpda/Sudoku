@@ -196,7 +196,7 @@ if (isMobile) {
         celulaSelecionada.querySelectorAll('.rascunho').forEach(r => r.remove());
       }
     }
-    if (botao.classList.contains('botao-rascunho')){
+    if (botao.classList.contains('botao-rascunho')|| e.target.classList.contains('botao-rascunho')){
         if (!celulaSelecionada) return;
         if (celulaSelecionada.classList.contains('numeroInicial') || celulaSelecionada.classList.contains('CellPreenchida')) return;
         if(celulaSelecionada.classList.contains('modo-rascunho')){
