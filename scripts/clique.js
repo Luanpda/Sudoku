@@ -203,8 +203,8 @@ if (isMobile) {
     }
     if (botao.classList.contains('botao-rascunho')){
         if (!celulaSelecionada) return;
-        if (celulaSelecionada.classList.contains('numeroInicial') ) return;
-        if(celulaSelecionada.classList.contains('modo-rascunho')|| celulaSelecionada.classList.contains('CellPreenchida')){
+        if (celulaSelecionada.classList.contains('numeroInicial') || celulaSelecionada.classList.contains('CellPreenchida') ) return;
+        if(celulaSelecionada.classList.contains('modo-rascunho')){
             celulaSelecionada.classList.remove('modo-rascunho');
             celulaSelecionada.innerHTML = ''; 
             celulaSelecionada.focus();
