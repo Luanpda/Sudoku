@@ -31,22 +31,7 @@
                 <button id="dificil" type="button" class="btn btn-outline-danger">Dificil</button>
             
             </div>
-            <div class="botoes">
-                <div class="botoes-opcoes">
-                    <button type="button"   class="botao-apagar "><img src="./img/iconizer-trash.svg" ></button>
-                    <button type="button"   class="botao-rascunho "><img src="./img/iconizer-pencil.svg"></button>
-                </div>
-            <div class="numeros">
-                <button class="botao-numero" data-numero="1">1</button>
-                <button class="botao-numero" data-numero="2">2</button>
-                <button class="botao-numero" data-numero="3">3</button>
-                <button class="botao-numero" data-numero="4">4</button>
-                <button class="botao-numero" data-numero="5">5</button>
-                <button class="botao-numero" data-numero="6">6</button>
-                <button class="botao-numero" data-numero="7">7</button>
-                <button class="botao-numero" data-numero="8">8</button>
-                <button class="botao-numero" data-numero="9">9</button>
-            </div>
+            <div class="botoes" id="botoes-container">
                 
             </div>
             <div class="game"></div>
@@ -54,7 +39,25 @@
         
 
     </div>
-
+    <script>
+        if (window.innerWidth <= 768) {
+          const container = document.getElementById('botoes-container');
+          container.innerHTML = `
+            <div class="botoes-opcoes">
+              <button type="button" class="botao-apagar">
+                <img src="./img/iconizer-trash.svg" alt="Apagar">
+              </button>
+              <button type="button" class="botao-rascunho">
+                <img src="./img/iconizer-pencil.svg" alt="Rascunho">
+              </button>
+            </div>
+            <div class="numeros">
+              ${[1,2,3,4,5,6,7,8,9].map(n => `<button class="botao-numero" data-numero="${n}">${n}</button>`).join('')}
+            </div>
+          `;
+        }
+      </script>
+      
     <script>
         const gameContainer = document.querySelector('.game');
       
