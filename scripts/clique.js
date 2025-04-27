@@ -152,7 +152,7 @@ document.addEventListener('keyup', (evento) => {
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
 if (isMobile) {
-  const barra = document.querySelector('.numeros');
+  const barra = document.querySelector('.botoes');
   
   barra.addEventListener('click', (e) => {
     const botao = e.target.closest('button');
