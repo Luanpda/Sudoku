@@ -8,18 +8,41 @@ import {destacarNumIguais} from "./destacarNumIguais.js"
 
 
 document.addEventListener('pointerdown',(evento) =>{
-    
-    if(evento.target.classList.contains('cell')){
-        const celula = evento.target.closest('.cell');
+    const celula = evento.target.closest('.cell');
+    if(celula){
         
-        destacarCelulas(evento);
-        destacarNumIguais(evento);
+        if (celula.classList.contains('modo-rascunho')) {
+            evento.preventDefault(); 
+            celula.classList.add('foco'); 
+            
+            const celulasMarcadas = document.querySelectorAll('.marcada');
+            celulasMarcadas.forEach(cel => cel.classList.remove('marcada'));
+            document.querySelectorAll('.foco').forEach(cell => {
+                if (cell !== celula) {
+                    cell.classList.remove('foco');
+                }
+            });
+            document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
+            document.querySelectorAll('.NumeroSelecionado').forEach(cell => cell.classList.remove('NumeroSelecionado'));
+            celula.focus();
+            return; 
+        }
+
+
+
+       
+        if(!celula.classList.contains('modo-rascunho')){
+            
+            destacarCelulas(evento);
+            destacarNumIguais(evento);
+        }
+        
         
     }
-    if(evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho') || evento.target.classList.contains('dificuldade-game')){
+    if(evento.target.classList.contains('container') || evento.target.classList.contains('cabecalho') || evento.target.classList.contains('dificuldade-game') || evento.target.classList.contains('modo-rascunho')){
 
         
-
+        
         document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
         document.querySelectorAll('.NumeroSelecionado').forEach(cell => cell.classList.remove('NumeroSelecionado'));
         document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));

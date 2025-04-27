@@ -41,7 +41,7 @@ export function destacarCelulas(evento){
 
     
     document.querySelectorAll('.foco').forEach(cell => cell.classList.remove('foco'));
-
+    
     const celulasMarcadas = document.querySelectorAll('.marcada');
     celulasMarcadas.forEach(cel => cel.classList.remove('marcada'));
 
@@ -49,6 +49,7 @@ export function destacarCelulas(evento){
 
     const celulaFoco = document.getElementById(celula);
     celulaFoco.classList.add('foco');
+    
 
     const nuemeroID = parseInt(celula.split('-')[1]);
 
