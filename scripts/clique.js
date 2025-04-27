@@ -186,7 +186,8 @@ if (isMobile) {
       verificarPosicao({ target: celulaSelecionada }, numero);
       setTimeout(verificarVitoria, 0);
 
-    } else if (botao.classList.contains('botao-apagar')) {
+    } 
+    if (botao.classList.contains('botao-apagar')) {
       celulaSelecionada.textContent = '';
       celulaSelecionada.classList.remove('errado');
       celulaSelecionada.classList.remove('CellPreenchida');
