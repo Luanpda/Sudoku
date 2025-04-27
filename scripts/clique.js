@@ -211,6 +211,8 @@ if (isMobile) {
             
         }else{
             celulaSelecionada.classList.add('modo-rascunho');
+            const celulasMarcadas = document.querySelectorAll('.marcada');
+            celulasMarcadas.forEach(cel => cel.classList.remove('marcada'));
             for( let i  = 0; i < 9; i++ ){
                 const celulaRascunho = document.createElement('div');
                 celulaRascunho.classList.add('rascunho');
