@@ -160,7 +160,7 @@ if (isMobile) {
     if (!botao) return;
 
     const celulaSelecionada = document.querySelector('.foco'); 
-    const celula = e.target.closest('cell')
+    // const celula = e.target.closest('cell')
     if (!celulaSelecionada || celulaSelecionada.classList.contains('numeroInicial')) return;
 
     if (botao.classList.contains('botao-numero')) {
@@ -190,8 +190,6 @@ if (isMobile) {
       celulaSelecionada.textContent = '';
       celulaSelecionada.classList.remove('errado');
       celulaSelecionada.classList.remove('CellPreenchida');
-    }else if(botao.classList.contains('botao-rascunho')){
-        
     }
   });
 }
