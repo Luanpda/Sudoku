@@ -174,10 +174,10 @@ if (isMobile) {
                             
                 if (alvo.textContent === numero) {
                     alvo.textContent = '';
-                    document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
+                    
                 } else {
                     alvo.textContent = numero;
-                    destacarNumIguais(e);
+                    
                 }
             }
             return;
@@ -186,8 +186,9 @@ if (isMobile) {
       celulaSelecionada.textContent = numero;
       celulaSelecionada.classList.add('CellPreenchida');
       
-
       verificarPosicao({ target: celulaSelecionada }, numero);
+      destacarNumIguais({ target: celulaSelecionada });
+
       setTimeout(verificarVitoria, 0);
 
     } 
