@@ -205,10 +205,7 @@ if (isMobile) {
             celulaSelecionada.focus();
             
         }else{
-            celulaSelecionada.classList.add('modo-rascunho');
-            celulaSelecionada.innerHTML = '';
-            celulaSelecionada.classList.remove('CellPreenchida');
-            celulaSelecionada.classList.remove('errado');
+            ;
             for( let i  = 0; i < 9; i++ ){
                 const celulaRascunho = document.createElement('div');
                 celulaRascunho.classList.add('rascunho');

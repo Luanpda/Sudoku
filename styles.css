@@ -254,6 +254,8 @@ body {
         max-height: 100%;
         transition: all 0.3s ease;
         display: block;
+        object-fit: contain; /* se for imagem */
+        pointer-events: none;
         
     }
     .botao-rascunho img{
@@ -264,6 +266,8 @@ body {
         max-height: 100%;
         transition: all 0.3s ease;
         display: block;
+        object-fit: contain; /* se for imagem */
+        pointer-events: none;
         
     }
    
