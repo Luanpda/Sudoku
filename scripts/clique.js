@@ -76,9 +76,10 @@ document.addEventListener('dblclick',(evento) =>{
         
         
         if (!evento.target.classList.contains('modo-rascunho')) {
-
+            const celulasMarcadas = document.querySelectorAll('.marcada');
+            celulasMarcadas.forEach(cel => cel.classList.remove('marcada'));
             evento.target.classList.add('modo-rascunho');
-            evento.target.removeAttribute('contenteditable');
+            
             
             
             for( let i  = 0; i < 9; i++ ){
