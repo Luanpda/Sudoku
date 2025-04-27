@@ -192,6 +192,24 @@ if (isMobile) {
       celulaSelecionada.classList.remove('errado');
       celulaSelecionada.classList.remove('CellPreenchida');
     }
+    if (botao.classList.contains('botao-rascunho')){
+        if(celulaSelecionada.classList.contains('modo-rascunho')){
+            celulaSelecionada.classList.remove('modo-rascunho');
+            celulaSelecionada.querySelectorAll('.rascunho').forEach(r => r.remove());
+            celulaSelecionada.focus();
+            return;
+        }else{
+            celulaSelecionada.classList.add('modo-rascunho');
+            for( let i  = 0; i < 9; i++ ){
+                const celulaRascunho = document.createElement('div');
+                celulaRascunho.classList.add('rascunho');
+                celulaRascunho.id = `celulaRascunho-${i}`;
+                celulaSelecionada.appendChild(celulaRascunho);
+            }
+
+        }
+
+    }
   });
 }
 
