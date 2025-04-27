@@ -131,10 +131,12 @@ document.addEventListener('keyup', (evento) => {
             if (celula.textContent === evento.key){
                 celula.textContent = "";
                 celula.classList.remove('CellPreenchida');
+                document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
             }else {
                 celula.textContent = evento.key;
                 celula.classList.add('CellPreenchida');
                 verificarPosicao({ target: celula }, evento.key);
+                destacarNumIguais(evento);
             }
             
 
@@ -172,8 +174,10 @@ if (isMobile) {
                             
                 if (alvo.textContent === numero) {
                     alvo.textContent = '';
+                    document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
                 } else {
                     alvo.textContent = numero;
+                    destacarNumIguais(e);
                 }
             }
             return;
