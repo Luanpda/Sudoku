@@ -3,7 +3,7 @@ import { verificarPosicao } from "./VerificarPosicao.js";
 import { verificarVitoria } from "./verificarVitoria.js";
 import {destacarNumIguais} from "./destacarNumIguais.js"
 
-
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
 
 
@@ -53,7 +53,7 @@ document.addEventListener('pointerdown',(evento) =>{
     
     
 })
-
+if (!isMobile){
 document.addEventListener('dblclick',(evento) =>{
 
     const celula = evento.target.closest('.cell');
@@ -116,7 +116,7 @@ document.addEventListener('dblclick',(evento) =>{
 
     }
 })
-
+}
 document.addEventListener('keyup', (evento) => {
     const celula = document.activeElement;
 
@@ -149,7 +149,7 @@ document.addEventListener('keyup', (evento) => {
         }
     }
 });
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
 
 if (isMobile) {
   const barra = document.querySelector('.botoes');
