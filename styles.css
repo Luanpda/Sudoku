@@ -188,7 +188,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     padding: 2px;
-    background-color: #3A5F7D;
+    background-color: #3A5F7D ;
   }
 
 
