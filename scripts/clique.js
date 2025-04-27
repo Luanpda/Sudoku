@@ -198,8 +198,8 @@ if (isMobile) {
     }
     if (botao.classList.contains('botao-rascunho')|| e.target.classList.contains('botao-rascunho')){
         if (!celulaSelecionada) return;
-        if (celulaSelecionada.classList.contains('numeroInicial') || celulaSelecionada.classList.contains('CellPreenchida')) return;
-        if(celulaSelecionada.classList.contains('modo-rascunho')){
+        if (celulaSelecionada.classList.contains('numeroInicial') ) return;
+        if(celulaSelecionada.classList.contains('modo-rascunho')|| celulaSelecionada.classList.contains('CellPreenchida')){
             celulaSelecionada.classList.remove('modo-rascunho');
             celulaSelecionada.innerHTML = ''; 
             celulaSelecionada.focus();
