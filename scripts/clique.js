@@ -188,16 +188,22 @@ if (isMobile) {
 
     } 
     if (botao.classList.contains('botao-apagar')) {
-      celulaSelecionada.textContent = '';
+      celulaSelecionada.innerHTML = '';
       celulaSelecionada.classList.remove('errado');
       celulaSelecionada.classList.remove('CellPreenchida');
+      if (celulaSelecionada.classList.contains('modo-rascunho')) {
+        celulaSelecionada.classList.remove('modo-rascunho');
+        celulaSelecionada.querySelectorAll('.rascunho').forEach(r => r.remove());
+      }
     }
     if (botao.classList.contains('botao-rascunho')){
+        if (!celulaSelecionada) return;
+        if (celulaSelecionada.classList.contains('numeroInicial') || celulaSelecionada.classList.contains('CellPreenchida')) return;
         if(celulaSelecionada.classList.contains('modo-rascunho')){
             celulaSelecionada.classList.remove('modo-rascunho');
-            celulaSelecionada.querySelectorAll('.rascunho').forEach(r => r.remove());
+            celulaSelecionada.innerHTML = ''; 
             celulaSelecionada.focus();
-            return;
+            
         }else{
             celulaSelecionada.classList.add('modo-rascunho');
             for( let i  = 0; i < 9; i++ ){
@@ -206,6 +212,7 @@ if (isMobile) {
                 celulaRascunho.id = `celulaRascunho-${i}`;
                 celulaSelecionada.appendChild(celulaRascunho);
             }
+            celulaSelecionada.focus();
 
         }
 
