@@ -281,25 +281,25 @@ body {
     .numeros{
         display: flex; 
         justify-content: center; 
-        
+        gap: 2px;
         flex-wrap: nowrap; 
         margin-top: 1em;
-        border: 1px solid var(--branco);
+        
     }
     .botao-numero{
         all: unset;
-        width: 35px; 
+        width: 35px;
+        color: #0d6efd;
         height: 35px;
         text-align: center;
-        font-size: 1.5em;
+        font-size: 1.7em;
         background-color: transparent;
-        color: var(--branco);
+        
     }
 
     .botao-numero:active{
-        background-color: #6ea8fe;
-        transform: scale(0.9);
-        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(158, 197, 254, 0.4); 
+        transform: scale(0.8);
     }
     
     .dificuldade {
