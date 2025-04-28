@@ -305,7 +305,7 @@ body {
     }
 
     .botao-numero:active{
-        box-shadow: 0 2px 4px rgba(158, 197, 254, 0.4); 
+        box-shadow: 0 2px 4px #0d6efd; 
         transform: scale(0.8);
     }
     
