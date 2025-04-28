@@ -167,6 +167,7 @@ if (isMobile) {
     if (!celulaSelecionada || celulaSelecionada.classList.contains('numeroInicial')) return;
 
     if (botao.classList.contains('botao-numero')) {
+        const numero = botao.dataset.numero;
         if(celulaSelecionada.classList.contains('modo-rascunho')){
             const numero = botao.dataset.numero;
             const index = parseInt(numero) - 1;
@@ -183,14 +184,23 @@ if (isMobile) {
             }
             return;
         }
-      const numero = botao.dataset.numero;
-      celulaSelecionada.textContent = numero;
-      celulaSelecionada.classList.add('CellPreenchida');
-      
-      verificarPosicao({ target: celulaSelecionada }, numero);
-      destacarNumIguais({ target: celulaSelecionada });
 
-      setTimeout(verificarVitoria, 0);
+        const ultimoNumeroTentado = celulaSelecionada.getAttribute('data-numero-tentado');
+
+        if (numero === ultimoNumeroTentado) {
+            return;
+        }
+        
+        celulaSelecionada.textContent = numero;
+        celulaSelecionada.classList.add('CellPreenchida');
+            
+        celulaSelecionada.setAttribute('data-numero-tentado', numero);
+
+        
+        verificarPosicao({ target: celulaSelecionada }, numero);
+        destacarNumIguais({ target: celulaSelecionada });
+
+        setTimeout(verificarVitoria, 0);
 
     } 
     if (botao.classList.contains('botao-apagar')) {
@@ -199,6 +209,7 @@ if (isMobile) {
       document.querySelectorAll('.NumeroSelecionado').forEach(cell => cell.classList.remove('NumeroSelecionado'));
       celulaSelecionada.classList.remove('errado');
       celulaSelecionada.classList.remove('CellPreenchida');
+      celulaSelecionada.removeAttribute('data-numero-tentado');
       if (celulaSelecionada.classList.contains('modo-rascunho')) {
         celulaSelecionada.classList.remove('modo-rascunho');
         celulaSelecionada.querySelectorAll('.rascunho').forEach(r => r.remove());
