@@ -13,7 +13,7 @@ export function verificarPosicao(evento,tecla){
     const coluna = nuemeroID % 9;
 
     const jogo = getJogoAtual();
-    // if (!jogo) return;
+   
     
     const resposta = jogo.respostaSudoku[linha][coluna];
 

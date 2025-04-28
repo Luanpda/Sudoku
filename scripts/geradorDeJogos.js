@@ -3,12 +3,12 @@ function criarTabuleiroVazio() {
 }
 
 function éSeguro(tabuleiro, linha, col, num) {
-  // Verifica linha e coluna
+  
   for (let x = 0; x < 9; x++) {
     if (tabuleiro[linha][x] === num || tabuleiro[x][col] === num) return false;
   }
 
-  // Verifica bloco 3x3 (corrigido)
+  
   const blocoLinhaInicio = 3 * Math.floor(linha / 3);
   const blocoColInicio = 3 * Math.floor(col / 3);
   for (let i = 0; i < 3; i++) {
