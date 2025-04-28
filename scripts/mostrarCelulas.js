@@ -1,7 +1,7 @@
 import { gerarSudoku,gerarSudokuFacil,gerarSudokuMedio,gerarSudokuDificil } from "./geradorDeJogos.js";
 import { setJogoAtual,setErros } from "./estadoJogo.js";
 import { resetarErros } from "./resetarErros.js";
-import { mostrarDificuldade } from "../mostrarDificuldade.js";
+import { mostrarDificuldade } from "./mostrarDificuldade.js";
 
  function  preencherTabuleiro(sudoku){
   

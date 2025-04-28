@@ -1,4 +1,4 @@
-import { getJogoAtual } from "./scripts/estadoJogo.js";
+import { getJogoAtual } from "./estadoJogo.js";
 
 
 export function mostrarDificuldade(){
