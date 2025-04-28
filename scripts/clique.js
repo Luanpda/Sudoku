@@ -195,6 +195,7 @@ if (isMobile) {
     } 
     if (botao.classList.contains('botao-apagar')) {
       celulaSelecionada.innerHTML = '';
+      document.querySelectorAll('.NumeroIgual').forEach(cell => cell.classList.remove('NumeroIgual'));
       document.querySelectorAll('.NumeroSelecionado').forEach(cell => cell.classList.remove('NumeroSelecionado'));
       celulaSelecionada.classList.remove('errado');
       celulaSelecionada.classList.remove('CellPreenchida');
