@@ -12,9 +12,7 @@ body {
     background-color: black;
     min-height: 100vh;
     color: var(--branco);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     margin: 0;
     color: black;  
 }
@@ -32,9 +30,12 @@ body {
     max-width: 810px;
     width: 90%;
     min-height: 630px;
+    max-height: 600;
     gap: 1em;
     height: auto;
-    padding: 2.6em 1em;
+    padding: 2em 1em;
+    margin-top: 1em;
+   
     border-radius: 20px;
     
 }
